@@ -1,0 +1,19 @@
+
+.alerta {
+  padding: 12px;
+  color: white;
+  border-radius: 6px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.alerta-sucesso {
+  background-color: #16a34a;
+}
+.alerta-erro {
+  background-color: #dc2626;
+}
+.alerta-aviso {
+  background-color: #f59e0b;
+}
+

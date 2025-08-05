@@ -1,0 +1,18 @@
+
+.meu-componente {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.meu-componente h1 {
+  color: #333;
+  font-size: 2rem;
+}
+
+.meu-componente p {
+  color: #555;
+  font-size: 1.1rem;
+}
+

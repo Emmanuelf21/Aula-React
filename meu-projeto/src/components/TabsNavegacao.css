@@ -1,0 +1,27 @@
+
+.tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.tab {
+  padding: 10px 16px;
+  border: none;
+  background-color: #e5e7eb;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.tab.ativa {
+  background-color: #6366f1;
+  color: white;
+}
+
+.tab-conteudo {
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background-color: white;
+}
+

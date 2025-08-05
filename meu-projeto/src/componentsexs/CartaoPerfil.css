@@ -1,0 +1,13 @@
+.card-perfil{
+    width: 240px;
+    border: 1px solid #3d3d3d;
+    border-radius: 20px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-perfil img{
+    border-radius: 20px 20px 0px 0px;
+}

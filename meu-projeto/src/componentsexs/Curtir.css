@@ -1,0 +1,19 @@
+.curtir{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+.curtir button{
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    border-radius: 50%;
+    background: rgb(66, 66, 255);
+}
+
+.curtir button:hover{
+    cursor: pointer;
+    background-color: rgb(91, 216, 7);
+}
