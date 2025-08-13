@@ -24,3 +24,15 @@
   .btn-login:hover {
     background-color: #115293;
   }
+  .btn-logout {
+    padding: 10px 20px;
+    background-color: #d21919;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .btn-logout:hover {
+    background-color: #931111;
+  }

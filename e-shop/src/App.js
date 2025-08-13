@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import HeroSection from './components/HeroSection';
 import LoginModal from './components/LoginModal';
 import ProductList from './components/ProductList';
 import CarrinhoModal from './components/CarrinhoModal';
+import { supabase } from './supabaseClient';
 
 function App() {
   const [mostrarModalLogin, setMostrarModalLogin] = useState(false);
@@ -10,7 +11,7 @@ function App() {
   const [carrinho, setCarrinho] = useState([]);
 
   const produtos = [
-    { id: 1, nome: 'Camisa Gabriel Shop', preco: 59.90 },
+    { id: 1, nome: 'Camisa E-Shop', preco: 59.90 },
     { id: 2, nome: 'Boné Estiloso', preco: 39.90 },
     { id: 3, nome: 'Tênis Urbano', preco: 129.90 }
   ];
@@ -30,6 +31,38 @@ function App() {
     setCarrinho(novoCarrinho);
   };
 
+  const [usuario, setUsuario] = useState();
+  useEffect(()=>{
+    const checkUser = async () =>{
+      const {data, error} = await supabase.auth.getUser()
+      if(data?.user){
+        setUsuario(data.user)
+      }else if(error){
+        console.log('Falha ao achar usuário!');
+      }
+    }
+    checkUser()
+
+    const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUsuario(session?.user ?? null)
+    })
+
+    return () => {
+      subscription.subscription.unsubscribe()
+    }
+  }, [])
+
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut()
+    if (error) {
+      console.error("Erro ao deslogar:", error.message)
+    } else {
+      console.log("Usuário deslogado com sucesso!")
+      // Se quiser, redireciona para login
+      window.location.href = "/login"
+    }
+  }
+
   return (
     <div>
       <header style={{ padding: "20px", textAlign: "right", backgroundColor: "#fff", borderBottom: "1px solid #eee" }}>
@@ -38,7 +71,7 @@ function App() {
         </button>
       </header>
 
-      <HeroSection onLoginClick={abrirModalLogin} />
+      <HeroSection onLoginClick={abrirModalLogin} usuario={usuario} handleLogout={handleLogout}/>
       <ProductList produtos={produtos} onAdicionarAoCarrinho={adicionarAoCarrinho} />
 
       {mostrarModalLogin && <LoginModal onClose={fecharModalLogin} />}
