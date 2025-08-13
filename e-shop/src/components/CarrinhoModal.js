@@ -2,7 +2,7 @@ import React from 'react';
 import './CarrinhoModal.css';
 
 function CarrinhoModal({ carrinho, onFechar, onRemoverItem }) {
-  const total = carrinho.reduce((soma, item) => soma + item.preco, 0);
+  const total = carrinho.reduce((soma, item) => soma + (item.preco*item.quantidade), 0);
 
   return (
     <div className="modal-overlay">
@@ -14,8 +14,8 @@ function CarrinhoModal({ carrinho, onFechar, onRemoverItem }) {
           <ul>
             {carrinho.map((item, index) => (
               <li key={index}>
-                {item.nome} - R$ {item.preco.toFixed(2)}{' '}
-                <button onClick={() => onRemoverItem(index)}>Remover</button>
+                {item.nome_produto} - R$ {item.preco.toFixed(2)}{' '} - {item.quantidade}x
+                <button onClick={() => onRemoverItem(item.id)}>Remover</button>
               </li>
             ))}
           </ul>
