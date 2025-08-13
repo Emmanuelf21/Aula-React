@@ -27,3 +27,11 @@
   text-decoration: underline;
 }
 
+.link-exercicios{
+  color: #fff;
+  text-decoration: none;
+}
+
+.link-exercicios:hover{
+  text-decoration: underline;
+}
